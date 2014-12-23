@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<script>
+	var i = 0;
+
+	function myFunction() {
+		i = 2;
+	//	document.getElementById("demo").style.visibility = ' hidden';
+		document.getElementById("inputReview1").style.visibility = 'visible';
+		document.getElementById("inputReview2").style.visibility = 'visible';
+
+	}
+	
+		function myFunction2() {
+		i = 2;
+	//	document.getElementById("demo").style.visibility = ' hidden';
+		document.getElementById("inputReview3").style.visibility = 'visible';
+		document.getElementById("inputReview4").style.visibility = 'visible';
+
+	}
+</script>
+<body>
+
+	<div style="margin-top: 20px;">
+		<header> <% include header %> </header>
+	</div>
+	<div id="main" class="container4">
+		<p style="Font-weight: bold; color: black; Font-size: 17px;">Enter
+			New Review or Edit previous :</p>
+
+					<form action="/getCategory" method="POST">
+					<label style="color: red; font-size: 16px;font-weight:bold; "> 
+					Selected Category : </label> <select name="categories" class="btnselect"
+							onchange="this.form.submit()">
+							 <% for(var
+							i=0;i< category.length;i++){ %>
+							<option value="<%= category[i].type%>"><%=
+								category[i].type%></option> <% } %>
+						</select>
+					</form>
+				</td>
+			</tr>
+			<br>
+			<tr>
+				<td>
+					<form action="/finalreview" method="POST">
+					<label style="color: red; font-size: 16px;font-weight:bold; "> 
+					Select Name : &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+					</label>	<select name="nameselected" class="btnselect"
+							onchange="this.form.submit()">
+							<option value="Default">Select Name</option> <% for(var i=0;i<
+							review.length;i++){ %>
+							<option value="<%= review[i].Cname%>"><%=
+								review[i].Cname%></option> <% } %> 
+				 </select>	</form>
+
+					<form action="/postReviews" method="POST">
+						<table
+							style="color: red; font-size: 12px; text-align: center; width: 600px;">
+							<tr>
+								<td style="color: black; text-align: left; font-weight: bold;"><label>
+								</label></td>
+							</tr>
+							<tr>
+								<td style="color: red; text-align: left;">
+									<p>
+										<label
+											style="color: red; margin-top: 20px; font-weight: bold;font-size: 16px;">
+											Post Review</label>
+									</p> <input type="text" name="inputReview" id="inputReview"
+									placeholder="Post Review" style="width: 300px; height: 50px;">
+								</td>
+							</tr>
+							<tr>
+								<td style="color: red; text-align: left;">
+									<p>
+										<label style="color: red;font-size: 16px;font-weight: bold;"> Rate</label> <input type="radio"
+											name="rate" value="1"> 1 </input> <input type="radio"
+											name="rate" value="2"> 2 </input> <input type="radio"
+											name="rate" value="3"> 3 </input> <input type="radio"
+											name="rate" value="4"> 4</input> <input type="radio"
+											name="rate" value="5"> 5 ...MAX</input>
+									</p>
+								</td>
+							</tr>
+							<tr>
+								<td style="color: black; text-align: left;">
+									<button type="submit"
+										style="margin-top: 15px; position: relative; width: 300px; height: 30px;
+										background-color:#E2E2E2"
+										class="btn ">Post review</button>
+								</td>
+							</tr>							
+						</table>
+						</form>
+						
+						
+				<form action="/editReviews" method="POST">
+							<div id="first"
+								style="left: 46%; width: 34%; top: 145px; position: absolute;"
+								class="btn">
+								<label style="color: white; Font-weight: bold; height: 30px;"
+									class="btnyfb btny "> Review for selected category</label> <br>
+								<br> <% for(var i=0;i< review.length;i++){ %>
+								<p
+									style="width: 95%; color: black; font-weight: normal; text-align: left;">
+
+									<label style="color: red; Font-weight: bold">Post
+										By:&nbsp </label><%= review[i].writer%> <br> <label
+										style="color: red; Font-weight: bold;"> About &nbsp
+										:&nbsp </label> <%= review[i].Cname%><br> <label
+										style="color: red; Font-weight: bold">Review :&nbsp </label>
+									<%= review[i].review%><br>
+									<label
+										style="color: red; Font-weight: bold">Rating :&nbsp </label>
+									<%= review[i].rating%>
+								</p>
+								
+	
+									<%if( user === review[i].writer) { %> <input type="text"
+										name="inputReview3" id="inputReview3"
+										style="width: 400px; height: 30px; visibility: hidden; top: -15px; margin-left: 40px; position: relative;">
+
+									<button type="submit" id="inputReview4"
+										style="position: relative; width: 60px; height: 25px; visibility: hidden; position: relative;"
+										class=" btn btnfb ">Save</button>
+
+									&nbsp&nbsp&nbsp&nbsp
+									<button type="button" onclick="myFunction2()"
+										style="position: relative; width: 60px; height: 25px;"
+										class=" btn btnfb ">Edit</button>
+
+
+				<button type="submit"
+					style="position: relative; width: 60px; height: 25px;"
+					class=" btn btnyfb ">Delete</button>
+									<% } %>
+									<hr>
+									<% } %>
+							
+							</div>
+					</form>
+	
+		<br> <br>
+<label style="color: red; font-size: 26px;font-weight:bold;"
+									> All Activity :</label> <br>		
+		
+<form action="/editReviews" method="POST">
+
+		<div id="second"
+			style="float: left; width: 43%; position: relative; margin-top: 20px; border: 1px solid #ccccc8; border-left: none;">
+
+			<% for(var i=0;i< 25;i++){ %>
+			<p style="width: 95%; color: black;">
+				<label style="color: red; Font-weight: bold">Post By:</label> <%=
+				allrev[i].writer%> <br> <label
+					style="color: red; Font-weight: bold;"> About &nbsp :</label> <%=
+				allrev[i].Cname%></label> <br> <label
+					style="color: red; Font-weight: bold;">Review :</label> <label
+					id="demo" style="color: black; visibility: visible;"> <%=
+					allrev[i].review%> </label> 
+					
+					
+					<%if( user === allrev[i].writer) {%>
+
+					<input type="text"
+						name="inputReview1" id="inputReview1"
+					value="<%= allrev[i].review%>"
+					style="width: 400px; height: 30px; visibility: hidden; top: -10px; margin-left: 4px; position: relative;">
+
+				<button type="submit"  id="inputReview2"
+						style="position: relative; width: 60px; height: 25px; visibility: hidden; position: relative;"
+					class=" btn btnfb ">Save</button>
+
+
+
+				&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+				<button type="button" onclick="myFunction()"
+					style="position: relative; width: 60px; height: 25px;"
+					class=" btn btnfb ">Edit</button>
+
+				&nbsp&nbsp&nbsp&nbsp
+				<button type="submit"
+					style="position: relative; width: 60px; height: 25px;"
+					class=" btn btnyfb ">Delete</button>
+				<% } %>
+			<hr>
+			<% } %>
+
+		</div>
+		</form>
+	</div>
+</body>
+</html>

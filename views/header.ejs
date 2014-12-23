@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<link rel='stylesheet' href='/stylesheets/style.css' />
+
+
+</head>
+<body>
+
+	<div >
+		
+		<table id ="signin" style="width: 65%; margin-left: 20%; ">
+
+		
+			<tr>
+				<td width=75%"><div>
+					<table style="width: 100%;margin-top: -20px;">
+						<tr>
+							<td style="background-color: #F6EDEA;">
+								<table>
+									<tr>
+										<td width=5%
+											style="background-color: #F6EDEA; font-weight: bold; margin-left: 10px;">Find</td>
+										<td><input type="search"
+											name="tacos, cheap dinner, Maxs"
+											value="tacos, cheap dinner, Maxs"
+											style="width: 280px; height: 25px; border: inactiveborder; background-color: #F6EDEA; color: #9999AA;"></td>
+									</tr>
+								</table>
+							</td>
+							<td width=5%;>.</td>
+							<td>
+								<table style="background-color: #F6EDEA;">
+									<tr>
+										<td width=5%; font-weight:bold;">Near</td>
+										<td><input type="search" name="San Jose, CA"
+											value="San Jose, CA"
+											"  
+	    style="width: 280px; height: 25px; border: inactiveborder; background-color: #F6EDEA; color: #3367A5"></td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</table>
+				</td>
+
+				<td><form action="/logout" method="post">
+					<table style="width: 100%;">
+						<tr>
+							<td width=50% style="text-align: left;">
+								<button type="button" onclick=""
+									style="background-color: maroon; font-weight: bold; color: white; height: 30px; border: inactiveborder;z-index: 3;margin-top:-5px;">Click
+									Me!</button>
+							</td>
+							<td width=5% style="text-align: left;"></td>
+							<td width=45% style="text-align: right; height: 60px;">
+								<button  type="submit" onclick=""
+									style="background-color: maroon; font-weight: bold;margin-top:-5px;
+    color: white; height: 30px; border: inactiveborder;">logOut</button>
+								
+							</td>
+						</tr>
+					</table></form>
+				</td>
+
+			</tr>
+
+		</table>
+
+
+<form action="/signin" method="post">
+		<table
+			style="width: 75%; margin-top: -55px; margin-left: 20%; text-align: left;">
+			<tr>
+				<td width=5%><a href="" class="hover">Home</a></td>
+				<td width=13%><a href="" class="hover">About Me</a></td>
+				<td width=18%><a href=""
+					style="font-weight: bold; color: white; diplay: block;"
+					class="hover">Write review</a></td>
+				<td width=8%><a href="" class="hover">Messages</a></td>
+				<td width=5%><a href="" class="hover">Talks</a></td>
+				<td width=5%><a href="" class="hover">Events</a></td>
+
+				<td width=8%><a href="" class="hover"></a></td>
+
+		<td width=38% class="hover"  >		       
+				
+	<div style ="margin-left :10px;">  Welcome <%= user%> 	 <br> Last login is :<%= loginTime%> <div>
+
+				</td>	
+
+
+			</tr>
+		</table></form>
+</body>
+</html>

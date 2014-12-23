@@ -1,0 +1,150 @@
+<html>
+<head>
+<title>Login</title>
+<link rel='stylesheet' href='/stylesheets/style.css' />
+
+
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+var x=1;
+    function myFunction(){
+        x++;
+        var input=document.createElement('input');
+        input.setAttribute("id",x);
+        input.setAttribute("type","text");
+
+        document.getElementById("holder").appendChild(input);
+
+    }
+    
+function myFunction() {
+ i=2;
+   document.getElementById("inputReview").style.visibility = 'visible';
+   document.getElementById("demo").style.visibility = 'hidden';
+}
+
+</head>
+<body>
+<header style ="margin-top:-3%;"> <% include header %> </header>
+	
+	<form action=" /login" method="post" class="container">
+		<div>
+
+			<table
+				style="margin-top: 5px; position: relative; width: 100%; border-bottom: 1px solid #e5e5e1;">
+				<tr>
+					<td style="font-weight: bold; color: black">Myweb</td>
+					<td width=28% style="font-weight: bold; color: black">San
+						Jose, CA</td>
+					<td width=10%><a href="" class="link">San Jose</a></td>
+					<td width=10%><a href="" class="link"> New York </a></td>
+					<td width=12%><a href="" class="link">Los Angeles</a></td>
+					<td width=8%><a href="" class="link">Chicago</a></td>
+
+					<td width=9%><a href="" class="link">Palo Alto </a></td>
+					<td width=9%><a href="" class="link">Oakland </a></td>
+					<td width=14%><a href="" class="link">More Cities>></a></td>
+
+				</tr>
+				<tr>
+					<td></td>
+				</tr>
+			</table>
+		</div>
+	</form>
+	<form action="/getCategory" method="POST" class="container">
+	
+		<table>
+			<tr>
+				<td><select name="categories" class="btnselect"
+					onchange="this.form.submit()" >
+						<option value="Default">Select Category</option> <% for(var i=0;i<
+						category.length;i++){ %>
+						<option value="<%= category[i].type%>" style ="background-color:#E3E3E3"><%= category[i].type%>
+						</option> <% } %>
+				</select>
+				
+	
+				</td>
+				
+			</tr>
+		</table>
+
+</form>
+
+		<div class="container">
+			<div>
+		
+				<table
+					style="color: red; font-size: 12px; text-align: center; width: 600px;">
+					<tr>
+						<th style="color: red; text-align: left;"><label>
+								Post Review here</label>
+						<th style="color: red; text-align: center;">RATING..</th>
+					</tr>
+					<tr>
+						<td style="color: red; text-align: left;"><input type="text"
+							name="inputReview" id="inputReview" placeholder="Post Review"
+							style="width: 250px; height: 100px;"></td>
+
+						<td style="color: red; font-size: 12px; text-align: center;">
+
+							<input type="radio" name="rate" value="1"> 1 </input> <input
+							type="radio" name="rate" value="2"> 2 </input> <input
+							type="radio" name="rate" value="3"> 3 </input> <input
+							type="radio" name="rate" value="4"> 4</input> <input type="radio"
+							name="rate" value="5"> 5 ...MAX</input>
+						</td>
+					</tr>
+					<tr>
+						<td style="color: red; text-align: left;">
+							<button type="submit"
+								style="margin-top: 15px; position: relative; width: 250px; height: 30px;"
+								class="btn ">Post review</button>
+						</td>
+					</tr>
+				</table>
+				<br>
+			</div>
+			<br>
+
+			<div style="color: red;"></div>
+			<br> <br>
+			<div
+				style="color: red; font-weight: bold; font-size: 16px; text-align: left;">Recent
+				Activity :</div>
+		
+
+			<div style="float:left;width: 103%; position:relative;margin-top:29px;
+			border: 1px solid #ccccc8;margin-left:-15px;">
+			
+				
+				<% for(var i=0;i< 15;i++){ %>
+				<p  style="width: 95%;color: black;" >
+		<label style="color: red; Font-weight: bold">Post By:</label><%= allrev[i].writer%> 
+		 <br>
+		<label style="color: red; Font-weight: bold;"> About &nbsp :</label>
+		
+		 <%= allrev[i].Cname%></label>
+	 <br>
+	 
+	<label style="color: red; Font-weight: bold">Review :</label>
+
+   <%= allrev[i].review%> 
+				 <%if(  user === allrev[i].writer) { %>	 	
+					 	&nbsp&nbsp&nbsp&nbsp<button type="submit"
+								style=" position: relative; width: 60px; height: 25px;"
+								class=" btn btnfb "  onClick=myFunction()>Edit</button>	
+									
+							&nbsp&nbsp&nbsp&nbsp	<button type="submit"
+								style=" position: relative; width: 60px; height: 25px;"
+								class=" btnfr btnyfb ">Delet</button>	
+						<% } %>
+				<hr>
+				<% } %>
+
+			</div>
+		</form>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<html>
+<head>
+<title>Login</title>
+<link rel='stylesheet' href='/stylesheets/style.css' />
+<link rel='stylesheet' href='/stylesheets/bootstrap.min.css' />
+
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+</head>
+<body>
+
+<header> <% include header1 %> </header>
+
+
+	<form action="/login" method="get" class="container2">
+		<!-- This panel is for login -->
+		<table style ="width:100%; min-height: 50%">
+		<tr><td width="50%" style=" border-right:1px solid #ccccc8;">
+		
+		<table>
+		<tr><td>
+		<div >
+			<table><tr>
+			<td style="color: #B30804;font-weight: bold;font-size: 18px;"  >Log In</td> </tr> 
+			<tr>
+			<td style="font-size: 12px;">Please enter your email address and password to log in.</td> </tr> 
+			</table>
+		</div>
+	
+	
+	
+		<div style ="padding-top: 10px;">
+				<input type="email" class="form-cont" name="inputUsername"
+					id="inputUsername" placeholder="Email Id">
+
+			</div>
+
+			<div style ="padding-top: 10px;">
+				<input type="password" class="form-cont" name="inputPassword"
+					id="inputPassword" placeholder="Password">
+			</div>
+	         <div style ="padding-top: 10px;">
+				<button type="submit"
+					style="margin-top: 15px; position: relative; width: 313px; height: 30px;"
+					class="btn ">Log In</button>
+			</div>
+
+	</div> </td></tr>
+	</table>
+	
+		 </td> <td> .</td></tr>
+	</table>
+	</form>
+</body>
+
+</html>

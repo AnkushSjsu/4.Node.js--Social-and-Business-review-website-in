@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<script>
+	var i = 0;
+	function poponload() {
+		testwindow.moveTo(400, 400);
+		window.open("http://localhost:3010/review");
+	}
+
+	function myFunction() {
+		i = 2;
+		document.getElementById("demo").style.visibility = 'visible';
+		document.getElementById("demo1").style.visibility = 'visible';
+	}
+
+	function update(obj) {
+		document.getElementById('category').value = obj.options[obj.selectedIndex].value;
+
+		document.getElementById('myLink').href = "http://localhost:3010/getCategory/"
+				+ document.getElementById('category').value;
+
+		document.getElementById('newlink').href = "http://localhost:3010/getCategory/"
+				+ document.getElementById('category').value;
+
+	}
+</script>
+<body>
+<header style ="margin-top:4%;"> <% include header %> </header>
+	<header> <% include header %> </header>
+
+
+	<form action="" method="get" class="container">
+		<p style="Font-weight: bold; color: red; Font-size: 17px;">Select
+			Your choice <%= user[0].name%></p>
+
+		<table>
+
+			<tr>
+				<td><select name="categories" onchange="update(this)"
+					class="btn">
+						<option value="Default">Select Category</option>
+						<option value="Restaurant">Restaurant</option>
+						<option value="Food">Food</option>
+						<option value="Shoping">Shoping</option>
+						<option value="Nightlife">Nightlife</option>
+						<option value="Japanese">Japanese</option>
+						<option value="Coffee">Coffee & Tea</option>
+						<option value="Chinese">Chinese</option>
+						<option value="Bars">Bars</option>
+						<option value="Beauty">Beauty & Spas</option>
+						<option value="Automotive">Automotive</option>
+						<option value="Home">Home Services</option>
+						<option value="Health">Health & Medical</option>
+
+						<option value="Mass Media">Mass Media</option>
+				</select> <input type="hidden" id="category" name="category" /></td>
+				<td><a id="myLink" href="http://localhost:3010/getCategory/"
+					action="/getCategory" method="get" class="btn" TARGET="_self">
+						<font color="black">Submit</font>
+				</a></td>
+			</tr>
+		</table>
+
+	</form>
+
+	<div style="float: left; width: 45%;">
+		<% for(var i=0;i< review.length;i++){ %>
+
+		<form action="/update" method="post">
+			<table style="color: black; min-height: 200px; width: 100%"
+				class="container3">
+				<tr>
+					<td width="30%" border="1">
+
+						<p style="color: black; font-weight: bold;">Category:</p>
+						<p style="color: black; font-weight: bold;">Name :</p>
+						<p style="color: black; font-weight: bold;">Rating :</p>
+
+						<p style="color: black; font-weight: bold;">Location :</p>
+						<p style="color: black; font-weight: bold;">Type:</p>
+					</td>
+
+					<td width="50%">
+						<p>
+							<label><%= review[i].idCategory%></label>
+						</p>
+						<p>
+
+
+							<input type="hidden" name="name" value="<%= review[i].Cname%>">
+							<label
+								style="font-color: red; font-weight: bold; color: red; margin-left: -8px;"><%=
+								review[i].Cname%> </label> </input>
+						</p>
+
+						<p>
+							<label><%= review[i].rating%></label>
+						</p>
+						<p>
+							<label><%= review[i].type%></label>
+						</p>
+						<p>
+							<label><%= review[i].location%></label>
+						</p>
+						<button type="submit"
+							style="margin-top: 15px; position: relative; width: 313px; height: 30px;"
+							class="btn " onClick="poponload()">select</button>
+					</td>
+				</tr>
+
+			</table>
+		</form>
+		<% } %>
+	</div>
+
+
+	<div style="float: right; width: 55%">
+		<% for(var i=0;i< review.length;i++){ %>
+		<p class="btnbtn" style="width: 88%">
+			<label style="color: red; Font-weight: bold"><%=
+				review[i].writer%></label> Posted a review about <label
+				style="color: red; Font-weight: bold; font-size: 16px;"> <%=
+				review[i].Cname%></label> <br> <br> <%= review[i].review%>
+		<hr>
+
+
+		<% } %>
+
+
+	</div>
+
+</body>
+</html>
